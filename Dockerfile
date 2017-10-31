@@ -54,7 +54,7 @@ RUN export ZSH="/home/$username/.oh-my-zsh"; sh -c "$(curl -fsSL https://raw.git
     hg \
     cmd_exec_time \
     )" >> /home/$username/.zshrc
-	
+
 RUN	echo -e "if [ ! -n \"\${BULLETTRAIN_GIT_AHEAD+1}\" ]; then \n \
 			ZSH_THEME_GIT_PROMPT_AHEAD=\" ┬\" \n \
 		else \n \
@@ -70,6 +70,8 @@ RUN	echo -e "if [ ! -n \"\${BULLETTRAIN_GIT_AHEAD+1}\" ]; then \n \
 		else \n \
 			ZSH_THEME_GIT_PROMPT_DIVERGED=\$BULLETTRAIN_GIT_PROMPT_DIVERGED \n \
 		fi" >> /home/$username/.zshrc
+
+RUN echo -e "alias wds='./node_modules/.bin/webpack-dev-server --config config/webpack.config.dev.js --progress --color' \n" >> /home/$username/.zshrc
 
 RUN apk add tzdata && \
 	cp /usr/share/zoneinfo/Europe/Rome /etc/localtime && \
