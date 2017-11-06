@@ -78,7 +78,7 @@ RUN apk add tzdata && \
 	echo "Europe/Rome" >  /etc/timezone && \
 	apk del tzdata
 	
-RUN npm install -g gulp bower
+RUN npm install -g gulp bower webpack jasmine rimraf istanbul karma watch eslint
 
 RUN git config --system user.email "$git_useremail" && \
 	git config --system user.name "$git_username" && \
