@@ -9,7 +9,7 @@ ARG git_username="Fernando Walter Gagni"
 COPY common/stack-fix.c /lib/
 
 RUN apk update && apk upgrade && \
-    apk add --no-cache bash zsh git openssh curl vim sudo shadow ca-certificates openssl python && \
+    apk add --no-cache bash zsh git tig openssh curl vim sudo shadow ca-certificates openssl python && \
 	update-ca-certificates
 
 RUN adduser -g '' -D -s /bin/bash $username
@@ -71,7 +71,7 @@ RUN	echo -e "if [ ! -n \"\${BULLETTRAIN_GIT_AHEAD+1}\" ]; then \n \
 			ZSH_THEME_GIT_PROMPT_DIVERGED=\$BULLETTRAIN_GIT_PROMPT_DIVERGED \n \
 		fi" >> /home/$username/.zshrc
 
-RUN echo -e "alias wds='./node_modules/.bin/webpack-dev-server --config config/webpack.config.dev.js --progress --color' \n" >> /home/$username/.zshrc
+RUN echo -e "alias wds='./node_modules/.bin/webpack-dev-server --config config/webpack.config.dev.js --inline --hot --progress --color' \n" >> /home/$username/.zshrc
 
 RUN apk add tzdata && \
 	cp /usr/share/zoneinfo/Europe/Rome /etc/localtime && \
